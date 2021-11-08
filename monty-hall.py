@@ -4,10 +4,10 @@ import random
 
 # Instantiating a random treasure map
 def single_run():
-    locations = ['wasteland', 'wasteland', 'wasteland']
+    maps = ['wasteland', 'wasteland', 'wasteland']
     treasure_index = random.randint(0, 2)
-    locations[treasure_index] = 'one piece'
-    return locations
+    maps[treasure_index] = 'one piece'
+    return maps
 
 # Luffy's first choice
 def luffy():
@@ -15,10 +15,10 @@ def luffy():
     return luffy_first_choice
 
 # Monty's choice of a location that is neither Luffy's choice nor the treasure location
-def monty(locations, luffy_first_choice):
+def monty(maps, luffy_first_choice):
     monty_choice = 0
 
-    while monty_choice == luffy_first_choice or locations[monty_choice] == 'one piece':
+    while monty_choice == luffy_first_choice or maps[monty_choice] == 'one piece':
         monty_choice += 1
     
     return monty_choice
@@ -52,15 +52,15 @@ stick_count = 0
 switch_count = 0
 
 for i in range(trials):
-    locations = single_run()
+    maps = single_run()
     luffy_first_choice = luffy()
-    monty_choice = monty(locations, luffy_first_choice)
+    monty_choice = monty(maps, luffy_first_choice)
     luffy_switch_choice = luffy_switch(luffy_first_choice, monty_choice)
 
-    if locations[luffy_first_choice] == 'one piece':
+    if maps[luffy_first_choice] == 'one piece':
         stick_count += 1
     
-    elif locations[luffy_switch_choice] == 'one piece':
+    elif maps[luffy_switch_choice] == 'one piece':
         switch_count += 1
 
 output(stick_count, switch_count, trials) 
